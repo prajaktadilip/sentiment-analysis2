@@ -1,0 +1,36 @@
+{% extends 'Process/navbar.html'%}
+{% load static%}
+
+{% block content %}
+ <section id="gallery">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-12" >
+          <div class="card" style="border: 1px solid black;">
+            <img class="card-img-top" src="{% static 'chart.jpg'%} ">
+            <div class="card-body">
+              <h5 class="card-title">View<br> Pie Chart</h5>
+              <p class="card-text"></p>
+              <a href="{% url 'Process:piechart'%}" class="btn btn-outline-success btn-sm">PIECHART</a>
+            </div>
+          </div>
+        </div>
+
+       
+
+        <div class="col-lg-4 mb-12">
+          <div class="card" style="border: 1px solid black;">
+            <img class="card-img-top" src="{% static 'indi.jpg'%}" >
+            <div class="card-body">
+              <h5 class="card-title">View Individual Comments/Reviews</h5>
+              <p class="card-text"></p>
+              <a href="{% url 'Process:Individual'%}" class="btn btn-outline-success btn-sm">VIEW</a>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+    
+  </section>
+
+{% endblock %}

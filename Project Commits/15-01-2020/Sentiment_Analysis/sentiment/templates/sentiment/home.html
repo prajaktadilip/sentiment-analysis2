@@ -1,0 +1,68 @@
+{% extends "sentiment/base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="content-section">          
+                    <a class="article-title" href="fileupload">
+                        <center><img class="article-png" src="media/cloud.png" alt="upload-file" width="125" height="125"></center>
+                    </a>
+                    <p class='text-muted'>
+                    <ul class="list-group"></ul>
+                        <center><li class="list-group-item list-group-item-light"><a class="article-title" href="{% url 'fileupload' %}">Upload File</a></li></center>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="content-section">          
+                    <center><a class="article-title" href="#">
+                        <img class="account-png" src="media/filter.png" alt="process-img" width="125" height="125">
+                    </a></center>
+                <p class='text-muted'>
+                <ul class="list-group"></ul>
+                    <center><li class="list-group-item list-group-item-light"><a class="article-title" href="#">Algorithm</a></li></center>
+                </ul>
+                </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="content-section">          
+                    <center><a class="article-title" href="{% url 'filelist' %}">
+                        <img class="account-png" src="media/bar.png" alt="history-img" width="125" height="125">
+                    </a></center>
+                <p class='text-muted'>
+                <ul class="list-group"></ul>
+                    <center><li class="list-group-item list-group-item-light"><a class="article-title" href="{% url 'filelist' %}">History</a></li></center>
+                </ul>
+                </p>
+                </div>
+            </div>
+        </div>
+
+  {% endif %}
+</main>
+
+{% if is_paginated %}
+        {% if page_obj.has_previous %}
+            <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previos</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3'%}
+                <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+        {% endif %}
+
+
+{% endif %}
+{% endblock content %}

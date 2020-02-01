@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{%static 'about-us-1.css'%}">
+    
+
+    {% if title %}
+        <title>Sentiment Analysis - {{ title }}</title>
+    {% else %}
+        <title>Sentiment Analysis</title>
+    {% endif %}
+    <style type="text/css">
+      body{
+        background-color:  rgb(211,211,211);
+      }
+    #gallery{
+      margin: 12% 0% 0% 21%;
+
+
+      
+    }
+    .navbar{
+        color: white;
+    }
+    
+
+   
+</style>
+
+</head>
+
+<header class="site-header" style="border-bottom: 1px solid;">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        
+          
+          
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link 1" href="{% url 'Process:back' %}">Back</a>
+              
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+                <a class="nav-item nav-link 3" href="{% url 'Authentication:profile' %}" style="margin-right: 15%; width:200px;">Welcome, {{ user.username }}</a>
+                <form method="post" action="{% url 'Authentication:logout'%}">
+                  {% csrf_token %}
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Logout</button>
+          </form>
+               
+             
+            </div>
+          
+        </div>
+      </nav>
+    </header>
+
+    
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() 
+      {
+
+        
+        var data = google.visualization.arrayToDataTable([
+          ['Review', 'Rating'],
+          ['Positive', {{form}}],
+          ['Negative', {{form2}}],
+          ['Neutral',  {{form3}}],
+        ]);
+
+        var options = {
+          title: 'Overall Ratings'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <style type="text/css">
+      body{
+      background-color:  rgb(211,211,211);
+    }
+    </style>
+  </head>
+  <body>
+    <div id="piechart" style="width: 900px; height: 500px; margin-left: 25%;margin-top: 5%; background-color:  rgb(211,211,211); color:rgb(211,211,211); "></div>
+  </body>
+</html>
