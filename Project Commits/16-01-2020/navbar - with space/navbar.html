@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{%static 'about-us-1.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'sentiment/main.css' %}">
+
+    {% if title %}
+        <title>Sentiment Analysis - {{ title }}</title>
+    {% else %}
+        <title>Sentiment Analysis</title>
+    {% endif %}
+    <style type="text/css">
+    #gallery{
+      margin: 12% 0% 0% 21%;
+
+
+      
+    }
+    
+
+   
+</style>
+
+</head>
+
+<header class="site-header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          
+          
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="{% url 'Process:homepage' %}">Home</a>
+              <a class="nav-item nav-link" href="{% url 'Process:About' %}">About Us</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{% url 'Authentication:profile' %}">Welcome, {{ user.username }}</a>
+                <form method="post" action="{% url 'Authentication:logout'%}">
+                  {% csrf_token %}
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="nav-item btn btn-outline-success my-2 my-sm-0" type="submit" >Logout</button>
+          </form>
+               
+             
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    {% block content %}
+
+
+    {% endblock %}
+
+
+
+
+
+

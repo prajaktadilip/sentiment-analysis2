@@ -1,0 +1,41 @@
+{% extends 'Process/navbar.html'%}
+{% load static %}
+{% block content%}
+
+  
+  <section id="gallery">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-12" >
+          <div class="card" style="border: 1px solid black;">
+            <img class="card-img-top" src="{% static 'analysis.jpg'%} ">
+            <div class="card-body">
+              <h5 class="card-title">Sentiment Analysis</h5>
+              <p class="card-text"></p>
+              <a href="{% url 'Process:fileupload'%}" class="btn btn-outline-success btn-sm">ANALYZE</a>
+            </div>
+          </div>
+        </div>
+        <div style="width:100px;">
+          
+        </div>
+       
+
+        <div class="col-lg-4 mb-12">
+          <div class="card" style="border: 1px solid black;">
+            <img class="card-img-top" src="{% static 'his3.jpg'%}" >
+            <div class="card-body">
+              <h5 class="card-title">Analysis History</h5>
+              <p class="card-text"></p>
+              <a href="{% url 'Process:history'%}" class="btn btn-outline-success btn-sm">VIEW</a>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+    
+  </section>  
+
+{% endblock %}
+
+
